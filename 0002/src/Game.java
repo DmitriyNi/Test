@@ -16,7 +16,7 @@ import java.awt.image.BufferStrategy;
  * Time: 8:35
  * To change this template use File | Settings | File Templates.
  */
-public class Game extends Canvas implements Runnable {
+public class  Game extends Canvas implements Runnable {
     private static final long serialVersionUID = 1L;
     public static int WIDTH = 400;
     public static int HEIGHT = 300;
@@ -62,9 +62,9 @@ public class Game extends Canvas implements Runnable {
         game.setPreferredSize(new Dimension(WIDTH, HEIGHT));
 
         JFrame frame = new JFrame(Game.NAME);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //выход из приложения по нажатию клавиши ESC
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ ESC
         frame.setLayout(new BorderLayout());
-        frame.add(game, BorderLayout.CENTER); //добавляем холст на наш фрейм
+        frame.add(game, BorderLayout.CENTER); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         frame.pack();
         frame.setResizable(false);
         frame.setVisible(true);

@@ -5,15 +5,29 @@ import java.util.List;
  * Created by dem on 02.04.2017.
  */
 public class Pult {
-    Obsever observer;// = new Obsever();
-    public Pult(observer)
+    privata Observer observer;// = new Obsever();
+    private int volume;
+    private  int bright;
+    public Pult(int volume, int bright )
     {
-        this.observer = obsever;
+        this.volume = volume;
+        this.bright = bright;
     }
 
-    public void pressButton()
+    public void setVolume(int volume)
     {
-        observer.reactionInChange();
+        this.volume = volume;
+        notifyObserver();
     }
+    public void setVolume(int volume)
+    {
+        this.bright = bright;
+        notifyObserver();
+    }
+    public void notifyObserver()
+    {
+        valueChanges(this);
+    }
+
 
 }
