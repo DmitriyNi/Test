@@ -20,9 +20,12 @@ import java.util.List;
  */
 public class SpriteFactory
 {
+    private static final String MODULE = "0002/";
     private static final Map<String, BufferedImage> imageCache = new HashMap<String, BufferedImage>();
-    public static ISprite getSprite(String path)
+    public static ISprite getSprite(String resource)
     {
+
+        String path = MODULE + resource;
         BufferedImage sourceImage = imageCache.get(path);
         if (sourceImage == null)
         {
