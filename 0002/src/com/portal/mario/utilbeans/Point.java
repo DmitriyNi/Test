@@ -1,11 +1,7 @@
 package com.portal.mario.utilbeans;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Yurchik
- * Date: 01.04.17
- * Time: 12:37
- * To change this template use File | Settings | File Templates.
+ * Point class which shows position of display object
  */
 public class Point
 {

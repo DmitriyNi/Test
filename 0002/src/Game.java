@@ -1,36 +1,64 @@
 import com.portal.mario.display.IStage;
 import com.portal.mario.display.Stage;
-import com.portal.mario.game.KeyInputHandler;
+import com.portal.mario.game.controller.KeyInputHandler;
 import com.portal.mario.game.World;
-import com.portal.mario.utilbeans.*;
 import com.portal.mario.utilbeans.Point;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Yurchik
- * Date: 01.04.17
- * Time: 8:35
- * To change this template use File | Settings | File Templates.
+ *
  */
 public class  Game extends Canvas implements Runnable {
     private static final long serialVersionUID = 1L;
     public static int WIDTH = 400;
     public static int HEIGHT = 300;
-    public static String NAME = "TUTORIAL 1";
+    public static String NAME = "TEST GAME";
 
-    private static final int SPEED_MUL = 10;
-    private int currentIteration;
-
-    //private com.portal.mario.display.Sprite hero;
     private IStage stage;
     private World world;
-    private KeyInputHandler keyInput;
+    private KeyListener keyInput;
 
     private boolean running = false;
+    /**
+     * Game Enter point
+     * @param args - empty
+     */
+    public static void main(String[] args)
+    {
+        //  Create new game object - main game controller
+        Game game = new Game();
+        //  Determine canvas size (Canvas method)
+        game.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        //  Initialization of window object
+        JFrame frame = new JFrame(Game.NAME);
+        //  Exit by "Esc" key
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //  Create window layout
+        frame.setLayout(new BorderLayout());
+        //  Add canvas to window
+        frame.add(game, BorderLayout.CENTER);
+        //  Set window properties
+        frame.pack();
+        frame.setResizable(false);
+        frame.setVisible(true);
+
+        //  Run thread for the game
+        game.start();
+
+    }
+
+    /**
+     * Start game
+     */
+    public void start()
+    {
+        running = true;
+        new Thread(this).start();
+    }
     /**
      * When an object implementing interface <code>Runnable</code> is used
      * to create a thread, starting the thread causes the object's
@@ -46,6 +74,7 @@ public class  Game extends Canvas implements Runnable {
     public void run() {
         long lastTime = System.currentTimeMillis();
         long delta;
+        // Init game
         init();
         while (running)
         {
@@ -56,48 +85,22 @@ public class  Game extends Canvas implements Runnable {
         }
     }
 
-    public static void main(String[] args)
-    {
-        Game game = new Game();
-        game.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-
-        JFrame frame = new JFrame(Game.NAME);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //����� �� ���������� �� ������� ������� ESC
-        frame.setLayout(new BorderLayout());
-        frame.add(game, BorderLayout.CENTER); //��������� ����� �� ��� �����
-        frame.pack();
-        frame.setResizable(false);
-        frame.setVisible(true);
-
-        game.start();
-
-    }
-    public void start()
-    {
-        running = true;
-        new Thread(this).start();
-    }
+   /**
+     * The method updates game process
+     * @param delta - delta time between running
+     */
     public void update(long delta)
     {
-        if (keyInput != null && currentIteration == SPEED_MUL*2)
-        {
-            if (keyInput.isRightPressed())
-            {
-                world.moveHero(new Point(1, 0));
-            }
-            if (keyInput.isLeftPressed())
-            {
-               world.moveHero(new Point(-1, 0));
-            }
-            currentIteration = 0;
-            world.moveMash();
-       }
-        ++currentIteration;
-
+        //  Update the game world
+        world.update();
     }
+
+    /**
+     * Stage rendering
+     */
     public void render()
     {
-
+        //  canvas buffer strategy (related to approach of rendering images on canvas)
         BufferStrategy bs = getBufferStrategy();
         if (bs == null)
         {
@@ -105,28 +108,31 @@ public class  Game extends Canvas implements Runnable {
             requestFocus();
             return;
         }
+        //  retrieving graphics object which is drawing current frame
         Graphics g = bs.getDrawGraphics();
-
+        //  TODO Incapsulate the graphics object
+        //  set graphics to render each element of the stage
         stage.setGraphics(g);
+        //  TODO set graphics object on rendering stage to improve performance
+        //  render the stage
         stage.render();
-        /*g.setColor(Color.black);
-        g.fillRect(0, 0, getWidth(), getHeight());
-        g.dispose();*/
-
-
-       /* hero.setGraphics(g);
-        hero.setPoint(new com.portal.mario.utilbeans.Point(0, 0));
-        hero.render();*/
+        //  show rendered image on canvas
         g.dispose();
         bs.show();
     }
+
+    /**
+     * Initialization of the game
+     */
     public void init()
     {
-        //hero = getSprite("resources/background-base.png");
+        // Create new Stage (each object which can be displayed has to be added on the stage)
         stage = new Stage();
+        //  Create new world controller, all separate parts of the game should be controlled by the World class
         world = new World(stage);
-        keyInput = new KeyInputHandler();
-        currentIteration = 0;
+        //  Retrieving world key controller (the controller handles keyboard events)
+        keyInput = world.getKeysController();
+        //  Registration of the key controlled on canvas
         addKeyListener(keyInput);
     }
     
