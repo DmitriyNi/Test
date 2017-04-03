@@ -4,16 +4,16 @@ package src;
  * Created by dem on 02.04.2017.
  */
 public  class Observer {
-    private Display display = new Display();
-    public void changeValues(Pult pult)
+
+    public static void changeValues(Pult pult)
     {
         if (pult.codeButton == 1)
         {
-            display.volumeUp();
+            Display.volumeUp();
         }
         if (pult.codeButton==-1)
         {
-            display.volumeDown();
+            Display.volumeDown();
         }
     }
 }

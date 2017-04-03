@@ -9,7 +9,6 @@ import java.util.List;
  * Created by dem on 02.04.2017.
  */
 public class Pult {
-    private Observer observer = new Observer() ;
     private  final int CODE_BUTTON_VOLUME_UP=1;
     private  final int CODE_BUTTON_VOLUME_DOWN=-1;
     private  final int CODE_BUTTON_BRIGHT_UP=2;
@@ -22,7 +21,7 @@ public class Pult {
     }
     public void notifyObserver()
     {
-        observer.changeValues(this);
+        Observer.changeValues(this);
     }
 
     }
