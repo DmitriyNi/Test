@@ -3,7 +3,7 @@ package src;
 /**
  * Created by dem on 03.04.2017.
  */
-public class Display {
+public class Display implements IDisplay {
     private static int volume=10;
     private int bright=10;
 
@@ -15,5 +15,15 @@ public class Display {
     {
         volume+=-1;
         System.out.println("volume=" +volume);
+    }
+
+    @Override
+    public void changeVolume() {
+
+    }
+
+    @Override
+    public void changeBright() {
+
     }
 }
