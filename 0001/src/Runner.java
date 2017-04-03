@@ -8,9 +8,18 @@ public class Runner
 {
     public static void main(String[] args) {
         Pult pult = new Pult();
-        pult.pressButton(1);
-        pult.pressButton(-1);
-
+        Display display1 = new Display();
+        pult.pressButtonVolumeUp();
+        pult.pressButtonModeOn();
+        pult.pressButton1();
+        pult.pressButtonVolumeUp();
+        pult.pressButtonVolumeUp();
+        pult.pressButtonVolumeUp();
+        Display display2 = new Display();
+        pult.pressButtonVolumeUp();
+        pult.pressButton2();
+        pult.pressButtonVolumeDown();
+        pult.pressButtonModeOff();
 
 
     }

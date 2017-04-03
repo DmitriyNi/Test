@@ -5,16 +5,10 @@ package src;
  */
 public  class Observer
 {
-    public void changeValues(int codeButton)
+    public void changeValues(String codeButton)
     {
-        switch(codeButton)
-        {
-        case 10 :
+            Display.changeValues(codeButton);
 
-            break; 
-        case 11 :
 
-            break;
-        }
     }
 }
