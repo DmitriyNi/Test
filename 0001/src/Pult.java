@@ -9,38 +9,43 @@ import java.util.List;
  * Created by dem on 02.04.2017.
  */
 public class Pult implements IPult{
-    private  final int CODE_BUTTON_VOLUME_UP=1;
-    private  final int CODE_BUTTON_VOLUME_DOWN=-1;
-    private  final int CODE_BUTTON_BRIGHT_UP=2;
-    private  final int CODE_BUTON_BRIGHT_DOWN=-2;
+    private  final int CODE_BUTTON_VOLUME_UP=10;
+    private  final int CODE_BUTTON_VOLUME_DOWN=11;
+    private final int CODE_BUTTON_1=1;
+    private final int CODE_BUTTON_2=2;;
     public int codeButton;
-    public void pressButtonUp(int values)
+    private Observer observer;
+    public Pult(Observer obs)
     {
-        this.codeButton = values;
-        notifyObserver();
+        this.observer = new Observer();
     }
-    public void notifyObserver()
+    public void notifyObserver(int codeButton)
     {
-
+        this.observer.changeValues(codeButton);
     }
-
     @Override
-    public void pressButtonUp() {
-
+    public void pressButtonVolumeUp(int CODE_BUTTON_VOLUME_UP)
+    {
+        this.codeButton = CODE_BUTTON_VOLUME_UP;
+        this.notifyObserver(codeButton);
     }
-
     @Override
-    public void pressButtonDown() {
-
+    public void pressButtonVolumeDown(int CODE_BUTON_BRIGHT_DOWN)
+    {
+        this.codeButton = CODE_BUTON_BRIGHT_DOWN;
+        this.notifyObserver(codeButton);
     }
-
     @Override
-    public void pressButton1() {
-
+    public void pressButton1(int CODE_BUTTON_1)
+    {
+        this.codeButton = CODE_BUTTON_1;
+        this.notifyObserver(codeButton);
     }
-
     @Override
-    public void pressButton2() {
+    public void pressButton2(int CODE_BUTTON_2)
+    {
+        this.codeButton = CODE_BUTTON_2;
+        this.notifyObserver(codeButton);
 
     }
 }

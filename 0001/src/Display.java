@@ -7,19 +7,9 @@ public class Display implements IDisplay {
     private static int volume=10;
     private int bright=10;
 
-    public static void volumeUp() {
-        volume += 1;
-        System.out.println("volume ="+ volume);
-    }
-    public static void volumeDown()
-    {
-        volume+=-1;
-        System.out.println("volume=" +volume);
-    }
-
     @Override
-    public void changeVolume() {
-
+    public static void changeVolume() {
+        volume +=1;
     }
 
     @Override
