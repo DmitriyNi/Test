@@ -1,3 +1,7 @@
+package src;
+
+import src.Observer;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -5,29 +9,23 @@ import java.util.List;
  * Created by dem on 02.04.2017.
  */
 public class Pult {
-    privata Observer observer;// = new Obsever();
-    private int volume;
-    private  int bright;
-    public Pult(int volume, int bright )
-    {
-        this.volume = volume;
-        this.bright = bright;
-    }
+    private Observer observer = new Observer() ;
+    private  final int CODE_BUTTON_VOLUME_UP=1;
+    private  final int CODE_BUTTON_VOLUME_DOWN=-1;
+    private   int CODE_BUTTON_BRIGHT_UP=2;
+    private  final int CODE_BUTON_BRIGHT_DOWN=-2;
 
-    public void setVolume(int volume)
+    public void pressButton(int codeButton)
     {
-        this.volume = volume;
-        notifyObserver();
+        //notifyObserver(codeButton);
+         observer.changeValues(codeButton);
     }
-    public void setVolume(int volume)
+    /*public void notifyObserver(int values)
     {
-        this.bright = bright;
-        notifyObserver();
+        observer.changeValues(values);
     }
-    public void notifyObserver()
-    {
-        valueChanges(this);
+    */
     }
 
 
-}
+

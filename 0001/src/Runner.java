@@ -1,11 +1,15 @@
-/**
+package src; /**
  * Created by dem on 02.04.2017.
  */
+
+import src.Pult;
+
 public class Runner
 {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
-       int a = 2;
-        System.out.println("Hello Dima");
+        Pult pult = new Pult();
+        pult.pressButton(1);
+
+
     }
 }
