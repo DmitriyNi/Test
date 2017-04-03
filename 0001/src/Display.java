@@ -7,8 +7,13 @@ public class Display {
     private int volume=10;
     private int bright=10;
 
-    public void changeVolume(int value) {
-        volume += value;
+    public void volumeUp() {
+        volume += 1;
         System.out.println("volume ="+ volume);
+    }
+    public void volumeDown()
+    {
+        volume+=-1;
+        System.out.println("volume=" +volume);
     }
 }

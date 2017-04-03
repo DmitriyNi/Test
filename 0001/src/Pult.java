@@ -12,19 +12,19 @@ public class Pult {
     private Observer observer = new Observer() ;
     private  final int CODE_BUTTON_VOLUME_UP=1;
     private  final int CODE_BUTTON_VOLUME_DOWN=-1;
-    private   int CODE_BUTTON_BRIGHT_UP=2;
+    private  final int CODE_BUTTON_BRIGHT_UP=2;
     private  final int CODE_BUTON_BRIGHT_DOWN=-2;
+    public int codeButton;
+    public void pressButton(int values)
+    {
+        this.codeButton = values;
+        notifyObserver();
+    }
+    public void notifyObserver()
+    {
+        observer.changeValues(this);
+    }
 
-    public void pressButton(int codeButton)
-    {
-        //notifyObserver(codeButton);
-         observer.changeValues(codeButton);
-    }
-    /*public void notifyObserver(int values)
-    {
-        observer.changeValues(values);
-    }
-    */
     }
 
 

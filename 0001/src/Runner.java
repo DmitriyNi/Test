@@ -9,6 +9,8 @@ public class Runner
     public static void main(String[] args) {
         Pult pult = new Pult();
         pult.pressButton(1);
+        pult.pressButton(-1);
+
 
 
     }

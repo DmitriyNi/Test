@@ -5,15 +5,15 @@ package src;
  */
 public  class Observer {
     private Display display = new Display();
-    public void changeValues(int values)
+    public void changeValues(Pult pult)
     {
-        if (values == 1)
+        if (pult.codeButton == 1)
         {
-            display.changeVolume(values);
+            display.volumeUp();
         }
-        if (values==-1)
+        if (pult.codeButton==-1)
         {
-            display.changeVolume(values);
+            display.volumeDown();
         }
     }
 }
