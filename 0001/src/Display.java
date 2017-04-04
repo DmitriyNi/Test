@@ -4,22 +4,22 @@ package src;
  * Created by dem on 03.04.2017.
  */
 public class Display implements IDisplay {
-    private static int volume = 10;
-    private int bright = 10;
-    private static boolean mode;
+    private  int volume;
+    private int brigth;
+    private  boolean mode;
 
-    public Display() {
+    public Display(int volume, int bright) {
         this.volume = volume;
+        this.brigth = brigth;
         this.mode = false;
     }
-    private static void displayOn()
+    private  void displayOn()
     {
-        Display display = new Display();
-        mode = true;
+        this.mode = true;
         System.out.println("Телевизор включен");
     }
-
-    public static void changeValues(String codeTable) {
+    @Override
+    public  void changeValues(String codeTable) {
             if (mode == true) {
                 switch (codeTable)
                 {
@@ -38,25 +38,24 @@ public class Display implements IDisplay {
                         System.out.println("Показываем второй канал");
                         break;
                     case "666":
-                        Display.displayOff();
+                        this.displayOff();
                         break;
                 }
             } else
                 {
-                Display.mode = true;
-                Display.displayOn();
+                this.mode = true;
+                this.displayOn();
                 }
 
         }
 
 
-    public static void displayOff()
+    public  void displayOff()
     {
-        Display.mode = false;
+        this.mode = false;
         System.out.println("Телевизор выключен");
     }
 }
-
 
 
 

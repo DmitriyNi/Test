@@ -5,9 +5,15 @@ package src;
  */
 public  class Observer
 {
+    private Display realObserver;
+
+    public Observer(Display display)
+    {
+        this.realObserver = display;
+    }
     public void changeValues(String codeButton)
     {
-            Display.changeValues(codeButton);
+            realObserver.changeValues(codeButton);
 
 
     }

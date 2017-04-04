@@ -4,19 +4,19 @@ package src;
  * Created by dem on 02.04.2017.
  */
 public class Pult implements IPult{
-    private final String CODE_BUTTON_OFF ="666" ;
-    private final  String CODE_BUTTON_ON = "777";
-    private  final String CODE_BUTTON_VOLUME_UP="10";
-    private  final String CODE_BUTTON_VOLUME_DOWN="11";
+    private final static String CODE_BUTTON_OFF ="666" ;
+    private final static String CODE_BUTTON_ON = "777";
+    private final static String CODE_BUTTON_VOLUME_UP="10";
+    private final static String CODE_BUTTON_VOLUME_DOWN="11";
     private final String CODE_BUTTON_1="1";
     private final String CODE_BUTTON_2="2";;
     public String codeButton;
     private Observer observer;
 
 
-    public Pult()
+    public Pult(Observer observer)
     {
-        this.observer = new Observer();
+        this.observer = observer;
     }
 
     public void notifyObserver(String codeButton)
@@ -58,6 +58,10 @@ public class Pult implements IPult{
     {
         this.codeButton = CODE_BUTTON_OFF;
         this.notifyObserver(codeButton);
+    }
+    public void setObserver(Observer observer)
+    {
+        this.observer = observer;
     }
 }
 

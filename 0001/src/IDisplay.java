@@ -5,12 +5,7 @@ package src;
  */
 public interface IDisplay
 {
-    public static void changeValues(String codeButton)
-    {
-    }
-    public static void mode(String codeButton)
-    {
+      void changeValues(String codeButton);
 
-    }
 
 }
