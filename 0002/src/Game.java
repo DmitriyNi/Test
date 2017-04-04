@@ -46,6 +46,7 @@ public class  Game extends Canvas implements Runnable {
         frame.setResizable(false);
         frame.setVisible(true);
 
+// Test for pull request
         //  Run thread for the game
         game.start();
 
