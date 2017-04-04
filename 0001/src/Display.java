@@ -20,7 +20,7 @@ public class Display implements IDisplay {
     }
     @Override
     public  void changeValues(String codeTable) {
-            if (mode == true) {
+            if (true) {
                 switch (codeTable)
                 {
                     case "10":

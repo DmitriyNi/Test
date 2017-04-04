@@ -17,6 +17,7 @@ public class Pult implements IPult{
     {
         this.observer = observer;
     }
+// Change 1
 
     public void notifyObserver(String codeButton)
     {
