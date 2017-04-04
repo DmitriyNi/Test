@@ -8,22 +8,17 @@ public class Runner
 {
     public static void main(String[] args) {
         Display display1 = new Display(10,10);
+        DisplaySony displaySony1 = new DisplaySony(100,10);
         Observer observer1 = new Observer(display1);
+        observer1.setObserver(displaySony1);
         Pult pult = new Pult(observer1);
-        pult.pressButtonVolumeUp();
-        pult.pressButtonModeOn();
-        pult.pressButton1();
-        pult.pressButtonVolumeUp();
-        pult.pressButtonVolumeUp();
-        pult.pressButtonVolumeUp();
-        Display display2 = new Display(100,11);
-        observer1.setObserver(display2);
-        pult.pressButtonVolumeUp();
-        pult.pressButtonVolumeUp();
-        pult.pressButton2();
+        PultSony pultSony = new PultSony(observer1);
+
+
         pult.pressButtonVolumeDown();
+        pultSony.pressButtonDublScreen();
+        pult.pressButtonVolumeDown();
+        pultSony.pressButton2();
         pult.pressButtonModeOff();
-
-
     }
 }

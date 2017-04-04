@@ -10,7 +10,7 @@ public interface IPult {
     void pressButtonVolumeDown();
     void pressButton1();
     void pressButton2();
-
+    void someMetode();
     void pressButtonModeOn();
 
     void pressButtonModeOff();

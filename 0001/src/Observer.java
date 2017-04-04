@@ -8,19 +8,19 @@ import java.util.List;
  */
 public  class Observer
 {
-    private List<Display> realObservers = new ArrayList(); // List<IDevice> как-то так нужно
+    private List<IDisplay> realObservers = new ArrayList(); // List<IDevice> как-то так нужно
 
-    public Observer(Display display)
+    public Observer(IDisplay display)
     {
         setObserver(display);
     }
-    public void setObserver(Display display)
+    public void setObserver(IDisplay display)
     {
         realObservers.add(display);
     }
     public void changeValues(String codeButton)
     {
-        for (Display i: realObservers)
+        for (IDisplay i: realObservers)
         {
             i.changeValues(codeButton);
         }

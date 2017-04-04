@@ -20,14 +20,14 @@ public class Display implements IDisplay {
     }
     @Override
     public  void changeValues(String codeTable) {
-            if (true) {
+            if (mode) {
                 switch (codeTable)
                 {
-                    case "10":
+                    case "1V":
                         volume += 1;
                         System.out.println("Volume =" + volume);
                         break;
-                    case "11":
+                    case "-1V":
                         volume += -1;
                         System.out.println("Volume=" + volume);
                         break;
@@ -37,13 +37,12 @@ public class Display implements IDisplay {
                     case "2":
                         System.out.println("Показываем второй канал");
                         break;
-                    case "666":
+                    case "OFF":
                         this.displayOff();
                         break;
                 }
             } else
                 {
-                this.mode = true;
                 this.displayOn();
                 }
 
