@@ -16,9 +16,8 @@ public class Runner
         pult.pressButtonVolumeUp();
         pult.pressButtonVolumeUp();
         pult.pressButtonVolumeUp();
-        Display display2 = new Display(10,11);
-        Observer observer2 = new Observer(display2);
-        pult.setObserver(observer2);
+        Display display2 = new Display(100,11);
+        observer1.setObserver(display2);
         pult.pressButtonVolumeUp();
         pult.pressButtonVolumeUp();
         pult.pressButton2();

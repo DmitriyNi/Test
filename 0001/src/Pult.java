@@ -8,11 +8,10 @@ public class Pult implements IPult{
     private final static String CODE_BUTTON_ON = "777";
     private final static String CODE_BUTTON_VOLUME_UP="10";
     private final static String CODE_BUTTON_VOLUME_DOWN="11";
-    private final String CODE_BUTTON_1="1";
-    private final String CODE_BUTTON_2="2";;
+    private final static String CODE_BUTTON_1="1";
+    private final static String CODE_BUTTON_2="2";;
     public String codeButton;
     private Observer observer;
-
 
     public Pult(Observer observer)
     {
@@ -23,6 +22,7 @@ public class Pult implements IPult{
     {
         this.observer.changeValues(codeButton);
     }
+
     @Override
     public void pressButtonVolumeUp()
     {
