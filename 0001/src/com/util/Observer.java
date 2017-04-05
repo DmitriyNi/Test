@@ -1,4 +1,6 @@
-package src;
+package src.com.util;
+
+import src.com.display.IDisplay;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +11,6 @@ import java.util.List;
 public  class Observer
 {
     private List<IDisplay> realObservers = new ArrayList(); // List<IDevice> как-то так нужно
-
     public Observer(IDisplay display)
     {
         setObserver(display);
@@ -24,6 +25,5 @@ public  class Observer
         {
             i.changeValues(codeButton);
         }
-
     }
 }

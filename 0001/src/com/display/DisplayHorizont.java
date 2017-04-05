@@ -1,28 +1,22 @@
-package src;
+package src.com.display;
 
 /**
  * Created by dem on 03.04.2017.
  */
-public class Display implements IDisplay {
-    private  int volume;
+public class DisplayHorizont extends AbstractDisplay implements IDisplay {
+    private int volume;
     private int brigth;
-    private  boolean mode;
-
-    public Display(int volume, int bright) {
-        this.volume = volume;
-        this.brigth = brigth;
-        this.mode = false;
-    }
-    private  void displayOn()
+    private boolean mode;
+    public DisplayHorizont(int volume, int bright)
     {
-        this.mode = true;
-        System.out.println("Телевизор включен");
+     this.volume = volume;
+     this.brigth = brigth;
+     this.mode = false;
     }
     @Override
-    public  void changeValues(String codeTable) {
-            if (mode) {
-                switch (codeTable)
-                {
+    public void changeValues(String codeTable) {
+                  if (mode) {
+                switch (codeTable) {
                     case "1V":
                         volume += 1;
                         System.out.println("Volume =" + volume);
@@ -41,20 +35,30 @@ public class Display implements IDisplay {
                         this.displayOff();
                         break;
                 }
-            } else
-                {
+            } else {
                 this.displayOn();
-                }
+            }
+        }
+   @Override
+    public void displayOn() {
+        {
+            this.mode = true;
+            System.out.println("Телевизор включен");
+        }
+    }
 
+    @Override
+    public void displayOff()
+        {
+            this.mode = false;
+            System.out.println("Телевизор выключен");
         }
 
-
-    public  void displayOff()
-    {
-        this.mode = false;
-        System.out.println("Телевизор выключен");
-    }
 }
+
+
+
+
 
 
 
