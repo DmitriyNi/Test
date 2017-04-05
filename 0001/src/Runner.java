@@ -10,7 +10,7 @@ public class Runner
 {
     public static void main(String[] args) {
         IDisplay display1 = new DisplayHorizont(10,10);
-        IDisplay displaySony1 = new DisplaySony(100,10);
+        AbstractDisplay displaySony1 = new DisplaySony(100,10);
         Observer observer1 = new Observer(display1);
         observer1.setObserver(displaySony1);
         IPult pult = new PultHorizont(observer1);
@@ -19,7 +19,9 @@ public class Runner
         pultSony.pressButtonDublScreen();
         pult.pressButtonVolumeDown();
         pult.pressButtonVolumeDown();
-        pult.pressButton2(); //pultSony.pressButton2();???
+        pult.pressButton2();
+        pultSony.pressButton2();
         pult.pressButtonModeOff();
+        pultSony.pressButtonModeOff();
     }
 }

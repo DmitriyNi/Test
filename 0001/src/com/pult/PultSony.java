@@ -5,7 +5,7 @@ import src.com.util.Observer;
 /**
  * Created by dem on 04.04.2017.
  */
-public class PultSony extends AbstractPult implements IPult,IPultSony {
+public class PultSony extends AbstractPult implements IPultSony {
     public PultSony(Observer observer)
     {
         super(observer);

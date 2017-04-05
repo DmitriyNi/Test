@@ -9,55 +9,18 @@ public class DisplaySony extends AbstractDisplay implements IDisplay {
     private boolean mode;
 
     public DisplaySony(int volume, int brigth) {
-        this.volume = volume;
-        this.brigth = brigth;
-        this.mode = false;
-    }
-
-    public void displayOn() {
-        this.mode = true;
-        System.out.println("Телевизор включен");
+        super(volume,brigth);
     }
 
     @Override
-    public void displayOff()
-        {
-            this.mode = false;
-            System.out.println("Телевизор выключен");
+    public void realizeNewMetod(String codeTable) {
+        switch (codeTable) {
+            case "DUBL SCREEN":
+                System.out.println("Картинка в картинке. Круто!");
         }
-
-
-    @Override
-    public void changeValues(String codeTable) {
-        if (mode) {
-            switch (codeTable) {
-                case "1V":
-                    volume += 1;
-                    System.out.println("Volume =" + volume);
-                    break;
-                case "-1V":
-                    volume += -1;
-                    System.out.println("Volume=" + volume);
-                    break;
-                case "1":
-                    System.out.println("Показываем первый канал");
-                    break;
-                case "2":
-                    System.out.println("Показываем второй канал");
-                    break;
-                case "OFF":
-                    this.displayOff();
-                    break;
-                case "DUBL SCREEN":
-                    System.out.println("Картинка в картинке. Круто!");
-            }
-        } else {
-            this.mode = true;
-            this.displayOn();
-        }
-
     }
 }
+
 
 
 
