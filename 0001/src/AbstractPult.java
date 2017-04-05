@@ -4,10 +4,10 @@ package src;
  * Created by dem on 04.04.2017.
  */
 public abstract class AbstractPult {
-    private final static String CODE_BUTTON_OFF ="666" ;
-    private final static String CODE_BUTTON_ON = "777";
-    private final static String CODE_BUTTON_VOLUME_UP="10";
-    private final static String CODE_BUTTON_VOLUME_DOWN="11";
+    private final static String CODE_BUTTON_OFF ="OFF" ;
+    private final static String CODE_BUTTON_ON = "ON";
+    private final static String CODE_BUTTON_VOLUME_UP="1V";
+    private final static String CODE_BUTTON_VOLUME_DOWN="-1V";
     private final static String CODE_BUTTON_1="1";
     private final static String CODE_BUTTON_2="2";;
     public String codeButton;
@@ -17,8 +17,8 @@ public abstract class AbstractPult {
     {
         this.observer = observer;
     }
-// Change 1
-
+// Change 1 1
+        
     public void notifyObserver(String codeButton)
     {
         this.observer.changeValues(codeButton);
