@@ -14,6 +14,7 @@ public class DisplayHorizont extends AbstractDisplay implements IDisplay {
 
     @Override
     public void realizeNewMetod(String codeTable) {
+
         System.out.println("Функция не подерживается");
     }
 }
