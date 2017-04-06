@@ -1,4 +1,4 @@
-package src;
+package src.com.display;
 
 /**
  * Created by dem on 03.04.2017.
