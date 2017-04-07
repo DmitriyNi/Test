@@ -1,4 +1,4 @@
-package src.com.pult;
+package pult;
 
 /**
  * Created by dem on 03.04.2017.

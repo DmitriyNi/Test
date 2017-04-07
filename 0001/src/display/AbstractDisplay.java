@@ -1,6 +1,4 @@
-package src.com.display;
-
-import static com.intellij.openapi.ui.playback.PlaybackRunner.StatusCallback.Type.code;
+package display;
 
 /**
  * Created by dem on 05.04.2017.

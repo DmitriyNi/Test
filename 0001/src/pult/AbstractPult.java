@@ -1,6 +1,7 @@
-package src.com.pult;
+package pult;
 
-import src.com.util.Observer;
+
+import util.Observer;
 
 /**
  * Created by dem on 04.04.2017.

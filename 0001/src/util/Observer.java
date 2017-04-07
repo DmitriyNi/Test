@@ -1,6 +1,6 @@
-package src.com.util;
+package util;
 
-import src.com.display.IDisplay;
+import display.IDisplay;
 
 import java.util.ArrayList;
 import java.util.List;
