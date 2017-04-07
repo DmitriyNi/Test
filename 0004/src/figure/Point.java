@@ -4,19 +4,19 @@ package figure;
  * Created by dem on 07.04.2017.
  */
 public class Point {
-    private int x;
-    private int y;
-    public Point(int x, int y)
+    public double x;
+    public double y;
+    public Point(double x, double y)
     {
         this.x = x;
         this.y = y;
     }
-    public int getX(Point point)
+    public double getX()
     {
 
         return this.x;
     }
-    public int getY(Point point)
+    public double getY()
     {
         return this.y;
     }

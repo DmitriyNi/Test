@@ -16,9 +16,18 @@ public class Runner {
         Line line3 = new Line(point3,point4);
         Line line4 = new Line(point4,point1);
         Square square = new Square(line1,line2,line3,line4);
-     double s=line1.getDistanse(point1,point2);
+        double s=line1.getDistanse();
+        double s2=line2.getDistanse();
+        double s3=line3.getDistanse();
+        double s4=line4.getDistanse();
+        System.out.println(s + s2 +s3 + s4);
         System.out.println(s);
-
+        square.expansion( 2);
+        double s1 = square.getSquare();
+        System.out.println(s1);
+        square.pressure(2);
+        double s5 = square.getSquare();
+        System.out.println(s5);
 
     }
 }
