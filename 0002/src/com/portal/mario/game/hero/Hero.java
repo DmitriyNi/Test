@@ -15,7 +15,7 @@ public class Hero extends AnimationSprite implements IHero
     private static final String MOVE_LEFT = "move-left";
     private static final String STAY = "stay";
     private String currentAnimation = "";
-    private static final int DEFAULT_SPEED = 2;
+    private static final int DEFAULT_SPEED = 1;
     public Hero(Map<String, List<ISprite>> animations)
     {
         super(animations, DEFAULT_SPEED);

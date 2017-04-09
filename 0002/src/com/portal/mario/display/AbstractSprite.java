@@ -8,11 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Yurchik
- * Date: 01.04.17
- * Time: 12:40
- * To change this template use File | Settings | File Templates.
+ * Abstract sprite base logic of sprites drawing
  */
 public abstract class AbstractSprite implements ISprite
 {
@@ -26,6 +22,17 @@ public abstract class AbstractSprite implements ISprite
 
     public void setPoint(Point point)
     {
+        if (sprites.size() > 0)
+        {
+            Point oldPoint = this.point;
+            Point deltaPoint = new Point(oldPoint.getX() - point.getX(), oldPoint.getY() - point.getY());
+            for (ISprite sprite : sprites)
+            {
+                Point spritePoint = sprite.getPoint();
+                Point newSpritePoint = new Point(spritePoint.getX() + deltaPoint.getX(), spritePoint.getY() + deltaPoint.getY());
+                sprite.setPoint(newSpritePoint);
+            }
+        }
         this.point = point;
     }
     public Point getPoint()
@@ -35,11 +42,33 @@ public abstract class AbstractSprite implements ISprite
 
     public void setX(int x)
     {
+        if (sprites.size() > 0)
+        {
+            int oldX = point.getX();
+            int deltaX = oldX - x;
+            for (ISprite sprite : sprites)
+            {
+                int spriteX = sprite.getPoint().getX();
+                int newSpriteX = spriteX + deltaX;
+                sprite.setX(newSpriteX);
+            }
+        }
         point.setX(x);
     }
 
     public void setY(int y)
     {
+        if (sprites.size() > 0)
+        {
+            int oldY = point.getY();
+            int deltaY = oldY - y;
+            for (ISprite sprite : sprites)
+            {
+                int spriteY = sprite.getPoint().getY();
+                int newSpriteY = spriteY + deltaY;
+                sprite.setY(newSpriteY);
+            }
+        }
         point.setY(y);
     }
     public void addInnerSprite(ISprite sprite)

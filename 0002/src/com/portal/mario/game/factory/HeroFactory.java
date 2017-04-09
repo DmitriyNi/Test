@@ -1,4 +1,4 @@
-package com.portal.mario.factory;
+package com.portal.mario.game.factory;
 
 import com.portal.mario.display.ISprite;
 import com.portal.mario.game.hero.Hero;

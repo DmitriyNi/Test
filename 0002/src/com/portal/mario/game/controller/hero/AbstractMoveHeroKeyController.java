@@ -44,13 +44,16 @@ public abstract class AbstractMoveHeroKeyController implements IKeyController
         Point heroPoint = hero.getHeroPosition();
         if(heroPoint.getX() + deltaPoint.getX() > world.getHeroBarrier())
         {
-            Point newDelta = new Point(-1*(deltaPoint.getX() - (world.getHeroBarrier() - heroPoint.getX())), 0);
+            Point newDelta = new Point((deltaPoint.getX() - (world.getHeroBarrier() - heroPoint.getX())), 0);
             heroPoint.setX(world.getHeroBarrier());
             world.moveWorld(newDelta);
         }
         else if(heroPoint.getX() + deltaPoint.getX() < 0)
         {
+            Point newDelta = new Point((deltaPoint.getX() - (1 - heroPoint.getX())), 0);
             heroPoint.setX(1);
+            world.moveWorld(newDelta);
+
         }
         else
         {

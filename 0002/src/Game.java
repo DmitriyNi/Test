@@ -1,15 +1,19 @@
 import com.portal.mario.display.IStage;
 import com.portal.mario.display.Stage;
-import com.portal.mario.factory.HeroFactory;
-import com.portal.mario.game.controller.KeyInputHandler;
+import com.portal.mario.game.IWorld;
+import com.portal.mario.game.factory.HeroFactory;
 import com.portal.mario.game.World;
 import com.portal.mario.game.hero.Hero;
-import com.portal.mario.utilbeans.Point;
+import com.portal.mario.game.location.ILocation;
+import com.portal.mario.game.location.Location;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Properties;
 
 /**
  *
@@ -21,7 +25,7 @@ public class  Game extends Canvas implements Runnable {
     public static String NAME = "TEST GAME";
 
     private IStage stage;
-    private World world;
+    private IWorld world;
     private KeyListener keyInput;
 
     private boolean running = false;
@@ -48,7 +52,7 @@ public class  Game extends Canvas implements Runnable {
         frame.setResizable(false);
         frame.setVisible(true);
 
-// Test for pull request
+        // Test for pull request
         //  Run thread for the game
         game.start();
 
@@ -78,13 +82,20 @@ public class  Game extends Canvas implements Runnable {
         long lastTime = System.currentTimeMillis();
         long delta;
         // Init game
-        init();
-        while (running)
+        try
         {
-            delta = System.currentTimeMillis() - lastTime;
-            lastTime = System.currentTimeMillis();
-            update(delta);
-            render();
+            init();
+            while (running)
+            {
+                delta = System.currentTimeMillis() - lastTime;
+                lastTime = System.currentTimeMillis();
+                update(delta);
+                render();
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
         }
     }
 
@@ -127,14 +138,24 @@ public class  Game extends Canvas implements Runnable {
     /**
      * Initialization of the game
      */
-    public void init()
+    public void init() throws Exception
     {
         // Create new Stage (each object which can be displayed has to be added on the stage)
         stage = new Stage();
         //  Create new world controller, all separate parts of the game should be controlled by the World class
-        world = new World(stage, WIDTH, HEIGHT);
-        //  Initialize hero
-        world.addHero(HeroFactory.getHero(Hero.HeroType.MALE));
+
+        Properties properties = new Properties();
+        properties.load(new FileReader("0002/resources/Locations/Location-01-TestLocation/location.properties"));
+        ILocation location = new Location(properties, "resources/Locations/Location-01-TestLocation");
+
+        World.Builder builder = new World.Builder();
+        world = builder.setHeight(HEIGHT).
+                setWidth(WIDTH).
+                addStage(stage).
+                addHero(HeroFactory.getHero(Hero.HeroType.MALE)).
+                addLocation(location).
+                build();
+
         //  Retrieving world key controller (the controller handles keyboard events)
         keyInput = world.getKeysController();
         //  Registration of the key controlled on canvas
