@@ -1,5 +1,6 @@
 package com.portal.mario.game.controller.hero;
 
+import com.portal.mario.game.IWorld;
 import com.portal.mario.game.hero.IHero;
 import com.portal.mario.utilbeans.Point;
 
@@ -12,9 +13,9 @@ public class MoveRightKeyController extends AbstractMoveHeroKeyController
      * Constructor
      * @param hero - hero for the controller
      */
-    public MoveRightKeyController(IHero hero)
+    public MoveRightKeyController(IHero hero, IWorld world)
     {
-        super(hero);
+        super(hero, world);
     }
     @Override
     public void moveAction()

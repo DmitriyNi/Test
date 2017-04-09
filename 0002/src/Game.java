@@ -1,7 +1,9 @@
 import com.portal.mario.display.IStage;
 import com.portal.mario.display.Stage;
+import com.portal.mario.factory.HeroFactory;
 import com.portal.mario.game.controller.KeyInputHandler;
 import com.portal.mario.game.World;
+import com.portal.mario.game.hero.Hero;
 import com.portal.mario.utilbeans.Point;
 
 import javax.swing.*;
@@ -130,7 +132,9 @@ public class  Game extends Canvas implements Runnable {
         // Create new Stage (each object which can be displayed has to be added on the stage)
         stage = new Stage();
         //  Create new world controller, all separate parts of the game should be controlled by the World class
-        world = new World(stage);
+        world = new World(stage, WIDTH, HEIGHT);
+        //  Initialize hero
+        world.addHero(HeroFactory.getHero(Hero.HeroType.MALE));
         //  Retrieving world key controller (the controller handles keyboard events)
         keyInput = world.getKeysController();
         //  Registration of the key controlled on canvas

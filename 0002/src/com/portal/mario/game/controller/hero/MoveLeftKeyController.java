@@ -1,5 +1,6 @@
 package com.portal.mario.game.controller.hero;
 
+import com.portal.mario.game.IWorld;
 import com.portal.mario.game.hero.IHero;
 import com.portal.mario.utilbeans.Point;
 
@@ -8,9 +9,9 @@ import com.portal.mario.utilbeans.Point;
  */
 public class MoveLeftKeyController extends AbstractMoveHeroKeyController
 {
-    public MoveLeftKeyController(IHero hero)
+    public MoveLeftKeyController(IHero hero, IWorld world)
     {
-        super(hero);
+        super(hero, world);
     }
 
     @Override
