@@ -1,5 +1,6 @@
 package figure;
-
+import figure.Line;
+import figure.Point;
 import static org.eclipse.jdt.internal.compiler.codegen.ConstantPool.ValueOf;
 
 /**
@@ -10,45 +11,85 @@ public class Square {
     public Line line2;
     public Line line3;
     public Line line4;
+    public boolean angleTrue;
     public int size;
     public double lenght;
+    public boolean exist;
+    private boolean propertyesSquare1;
+    private boolean propertyesSquare2;
+
 
     //private Color color;
-public  Square(Line line1, Line line2, Line line3, Line line4) {
-    this.line1 = line1;
-    this.line2 = line2;
-    this.line3 = line3;
-    this.line4 = line4;
-    double x1Line1 = line1.point1.getX();
-    double x2Line1 = line1.point2.getX();
-    double y1Line2 = line2.point1.getY();
-    double y2Line2 = line2.point2.getY();
-    double x1Line3 = line3.point1.getX();
-    double x2Line3 = line3.point2.getX();
-    double y1Line4 = line4.point1.getY();
-    double y2Line4 = line4.point2.getY();
-        if (x1Line1 == x2Line1 && y1Line2==y2Line2 && x1Line3==x2Line3 && y1Line4==y2Line4 && !(x1Line1 == x1Line3) ) {
-        System.out.println("Квадрат создан");
-    }
+public  Square(Point point1, Point point2, Point point3, Point point4)
+    {
+    this.line1 = new Line(point1,point2);
+    this.line2 = new Line(point2,point3);
+    this.line3 = new Line(point3,point4);
+    this.line4 = new Line(point4,point1);
+    angleTrue(line1,line2);
+    propertyesSquare1();
+    propertyesSquare2();
+        if (propertyesSquare1 && propertyesSquare2 && angleTrue)
+            {
+                  System.out.println("Квадрат создан");
+                  this.exist = true;
+            }
         else
             {
-            System.out.println("Квадрат не существует");
+                System.out.println("Квадрат не существует");
             }
-}
+    }
+    public void angleTrue(Line line1, Line line2)
+    {
+        double A = line1.point2.getX()-line1.point1.getX();
+        double B = line1.point2.getY()-line1.point1.getY();
+        double C = line2.point2.getX()-line2.point1.getX();
+        double D = line2.point2.getY()-line2.point1.getY();
+        double vectorABBC = A * C + B * D;
+            if (vectorABBC == 0)
+            {
+             this.angleTrue = true;
+            }
+            else System.out.println("не перпендикулярны");
+    }
+    public void propertyesSquare1()
+    {
+        //Проверка на свовпадение точек
+        if (line1.point2.equals(line2.point1) && line2.point2.equals(line3.point1) && line3.point2.equals(line4.point1) && line4.point2.equals(line1.point1))
+            {
+            propertyesSquare1 = true;
+            }
+            else System.out.println("Точки квадрата не совпадают");
+    }
+    public void propertyesSquare2()
+    { //Проверка равенства длин сторон
+
+        if ( (line1.getDistanse() == line2.getDistanse()) && (line2.getDistanse() == line3.getDistanse()) && (line3.getDistanse() == line4.getDistanse()) && (line4.getDistanse() == line1.getDistanse()))
+
+        {
+            propertyesSquare2 = true;
+        }
+        else System.out.println("Стороны не равны");
+    }
+
     public void setSize(int size)
     {
 
     }
-    public   void expansion( double coef)
-    {
-        this.line1.point2.x = this.line1.point2.x * coef;
-        this.line1.point2.y = this.line1.point2.y * coef;
-        this.line2.point2.x = this.line1.point2.x * coef;
-        this.line2.point2.y = this.line1.point2.y * coef;
-        this.line3.point2.x = this.line1.point2.x * coef;
-        this.line3.point2.y = this.line1.point2.y * coef;
+    public   void expansion( double coef) {
+        if (exist) {
+            if ()
+            this.line1.point2.x = this.line1.point2.x +this.line1.getDistanse()*coef;
+            this.line1.point2.y = this.line1.point2.y +coef;
+            this.line2.point2.x = this.line1.point2.x + coef;
+            this.line2.point2.y = this.line1.point2.y + coef;
+            this.line3.point2.x = this.line1.point2.x + coef;
+            this.line3.point2.y = this.line1.point2.y + coef;
+        } else {
+            System.out.println("Квадрат не существует");
+        }
     }
-    public   void pressure( double coef)
+    public   void pressure(double coef)
     {
         this.line1.point2.x = this.line1.point2.x / coef;
         this.line1.point2.y = this.line1.point2.y / coef;
@@ -61,8 +102,15 @@ public  Square(Line line1, Line line2, Line line3, Line line4) {
 
     public double getSquare()
     {
-        double a = this.line1.getDistanse() * this.line1.getDistanse();
-        return  a;
+        if(exist)
+        {
+            double a = this.line1.getDistanse() * this.line1.getDistanse();
+            return a;
+        }
+        else
+            System.out.println("Квадрат не существует");
+
+        return 0;
     }
 
 }

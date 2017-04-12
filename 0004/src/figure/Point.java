@@ -4,8 +4,8 @@ package figure;
  * Created by dem on 07.04.2017.
  */
 public class Point {
-    public double x;
-    public double y;
+    protected double x;
+    protected double y;
     public Point(double x, double y)
     {
         this.x = x;
