@@ -5,8 +5,8 @@ import figure.Point;
  * Created by dem on 07.04.2017.
  */
 public class Line {
-    protected Point point1;
-    protected Point point2;
+    private Point point1;
+    private Point point2;
 
     public Line(Point point1, Point point2) {
         this.point1 = point1;
@@ -15,12 +15,22 @@ public class Line {
 
     public double getDistanse()
     {
+        double length = Math.sqrt((point2.getX()-point1.getX())*(point2.getX()-point1.getX()) + (point2.getY() - point1.getY())*(point2.getY() - point1.getY()));
 
-        double length = Math.sqrt((point2.x-point1.x)*(point2.x-point1.x) + (point2.y - point1.y)*(point2.y - point1.y));
 
         return length;
     }
-   /* public void expansion(Line line)
+    public Point getPoint1()
+    {
+
+        return this.point1;
+    }
+    public Point getPoint2()
+    {
+
+        return this.point2;
+    }
+    /* public void expansion(Line line)
     {
         //int x = line.point1.getX(point1);
     }*/
